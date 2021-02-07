@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+      padding-top: 20px;
+      background: #726eb7;
+       position:absolute;
+       left:50%;
+  transform: translate(-50%);
+  margin:0;
+  overflow-x:hidden;
+    }
+    #hnag {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 70px;
+      color: #F28482;
+       display: block;
+       font-weight: bold;
+       text-align: center;
+    }
+    a {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      color: black;
+       display: block;
+       text-align: center;
+    }
+    label {
+       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 35px;
+      color: #da66ac;
+       display: block;
+       text-align: center;
+       font-weight: bold;
+    }
+    b {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 35px;
+      color: black;
+       display: block;
+       text-align: center;
+       font-weight: bold;
+    }
+    button {
+      background-color: #fde89e;
+      color: #bd8051;
+      width: 100%;
+      height: 60px;
+      font-size: 25px;
+    }
+    #teller {
+      width: 90%;
+    }
+    input {
+      width: 100%;
+      height: 30px;
+      font-size: 20px;
+    }
+   </style>
+</head>
+<body>
+  <label id = "hnag"> FORTUNE TELLER </label>
+  <br>
+  <a> Họ và tên bạn </a>
+  <input id = "name1"> 
+  <br><br>
+  <a> Họ và tên người kia </a>
+  <input id = "name2">
+  <br><br>
+  <button id = "start" onclick = "cal()"> START </button>
+  <br><div id = "done"> <br></div>
+  <img src = "teller.png" id = "teller">
+  
+
+  <script type="text/javascript">
+    var divdone = document.getElementById('done'),
+        brr = document.createElement('br');
+    function cal() {
+      var n1 = document.getElementById('name1').value,
+          n2 = document.getElementById('name2').value,
+          sc1 = 0, sc2 = 0;
+      for (i = 0, maxi = n1.length; i < maxi; ++i) {
+        tmp = n1[i].charCodeAt(0);
+        sc1 += tmp;
+      }
+      for (i = 0, maxi = n2.length; i < maxi; ++i) {
+        tmp = n2[i].charCodeAt(0);
+        sc2 += tmp;
+      }
+      ans = (sc1 + sc2) % 100;
+      if (n1 === "Phùng Thị Hiền Khanh" && n2 === "Trần Như Hoa") {
+        ans = 100;
+        alert("Sống đến đầu bạc răng long! Chúc mừng cô Khanh chú Hoa");
+      }
+      txt1 = document.createElement('a'), heart = document.createElement('label'), txt2 = document.createElement('a');
+      txt1.innerHTML = n1;
+      heart.innerHTML = " ❤ " + ans+'%' + " ❤ ";
+      txt2.innerHTML = n2;
+      divdone.append(txt1);
+      divdone.append(heart);
+      divdone.append(txt2);
+      ngang = document.createElement('a');
+      ngang.innerHTML = "---------------";
+      divdone.append(brr); 
+      divdone.append(ngang);
+    }
+  </script>
+</body>
+</html>
