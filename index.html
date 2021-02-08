@@ -67,22 +67,48 @@
        text-align: center;
        font-weight: bold;
     }
+    q {
+      color: #fde89e;
+      font-size: 25px;
+      display: block;
+       text-align: center;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
    </style>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script>
+    function SubForm (){
+      cal();
+      $.ajax({
+        url:"https://api.apispreadsheets.com/data/7858/",
+        type:"post",
+        data:$("#myForm").serializeArray(),
+      });
+    }
+  </script>
 </head>
 <body>
   <label id = "hnag"> BÓI TÌNH IU 😚 </label>
+  <q> Code by Cam Nguyen </q>
   <br>
-  <a> Họ và tên bạn </a>
-  <input id = "name1"> 
-  <br><br>
-  <a> Họ và tên người kia </a>
-  <input id = "name2">
-  <br><br>
-  <button id = "start" onclick = "cal()"> START </button>
+
+  <form id="myForm">
+    <a>Họ và tên của bạn</a>
+    <input name="Name1" id = "name1"/>
+    <br/>
+    <a>Họ và tên của người kia</a>
+    <input name="Name2" id = "name2"/>
+    <br/>
+  </form>
+  <br>
+  <button onclick='SubForm()' id = "start">START</button>
+
   <br><div id = "done"> <br></div>
   <img src = "teller.png" id = "teller">
   
-
   <script type="text/javascript">
     var divdone = document.getElementById('done'),
         brr = document.createElement('br'),
