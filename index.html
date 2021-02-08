@@ -59,10 +59,18 @@
       height: 30px;
       font-size: 20px;
     }
+    h1 {
+      color: #ffe100;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 27px;
+       display: block;
+       text-align: center;
+       font-weight: bold;
+    }
    </style>
 </head>
 <body>
-  <label id = "hnag"> FORTUNE TELLER </label>
+  <label id = "hnag"> BÓI TÌNH IU 😚 </label>
   <br>
   <a> Họ và tên bạn </a>
   <input id = "name1"> 
@@ -77,7 +85,9 @@
 
   <script type="text/javascript">
     var divdone = document.getElementById('done'),
-        brr = document.createElement('br');
+        brr = document.createElement('br'),
+        ngang = document.createElement('a');
+    ngang.innerHTML = "----------";
     function cal() {
       var n1 = document.getElementById('name1').value,
           n2 = document.getElementById('name2').value,
@@ -90,25 +100,29 @@
         tmp = n2[i].charCodeAt(0);
         sc2 += tmp;
       }
-      ans = (sc1 + sc2) % 100;
-      if (n1 === "Phùng Thị Hiền Khanh" && n2 === "Trần Như Hoa") {
-        ans = 100;
-        alert("Sống đến đầu bạc răng long! Chúc mừng cô Khanh chú Hoa");
-      }
-      if (n1 === "Trần Như Khánh Nhi") {
-        alert("Nhưng mà Khánh Nhi chỉ hợp với Minh Trí thui");
-      }
-      txt1 = document.createElement('b'), heart = document.createElement('label'), txt2 = document.createElement('b');
-      txt1.innerHTML = n1;
+      tmp1 = (sc1/sc2)*100;
+      tmp2 = (sc2/sc1)*100;
+      tmp1 %= 100;
+      tmp2 %= 100;
+      ans = Math.max(tmp1, tmp2);
+      ans = Math.max(12.21, ans);
+      ans = ans.toFixed(2);
+      divdone.innerHTML = "";
+      txt11 = document.createElement('b'), heart = document.createElement('label'), txt2 = document.createElement('b'), txt1 = document.createElement('h1');
+      txt11.innerHTML = n1;
       heart.innerHTML = " ❤ " + ans+'%' + " ❤ ";
       txt2.innerHTML = n2;
-      divdone.append(txt1);
+      divdone.append(brr);
+      divdone.append(txt11);
       divdone.append(heart);
       divdone.append(txt2);
-      ngang = document.createElement('a');
-      ngang.innerHTML = "---------------";
-      divdone.append(brr); 
+      if (ans < 10) txt1.innerHTML = "Xin lũi nhưng mà hai bạn hông hợp nhau rùi 😥";
+      else if (ans < 50) txt1.innerHTML = "Hmmm hai bạn có cơ hội đấy. Nếu biết nắm bắt thì sẽ đến được với nhau. Trúk may mắn 😉";
+      else if (ans < 70) txt1.innerHTML = "Ở trên tình bạn dưới tình iu 🤔 Còn tí xíu nữa thì hai bạn là của nhau rồi ...";
+      else if (ans < 90) txt1.innerHTML = "Sin trút mừnq 😙 Hai bạn rất hợp nhau";
+      else txt1.innerHTML = "Tuyệt zờiiiiiiiii. Hai bạn sinh ra là dành cho nhauuuuuuu 🎉🤗";
       divdone.append(ngang);
+      divdone.append(txt1);
     }
   </script>
 </body>
