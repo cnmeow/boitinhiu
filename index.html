@@ -1,155 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-      padding-top: 20px;
-      background: #726eb7;
-       position:absolute;
-       left:50%;
-  transform: translate(-50%);
-  margin:0;
-  overflow-x:hidden;
-    }
-    #hnag {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 70px;
-      color: #F28482;
-       display: block;
-       font-weight: bold;
-       text-align: center;
-    }
-    a {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 20px;
-      color: black;
-       display: block;
-       text-align: center;
-    }
-    label {
-       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 35px;
-      color: #da66ac;
-       display: block;
-       text-align: center;
-       font-weight: bold;
-    }
-    b {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 27px;
-      color: black;
-       display: block;
-       text-align: center;
-       font-weight: bold;
-    }
-    button {
-      background-color: #fde89e;
-      color: #bd8051;
-      width: 100%;
-      height: 60px;
-      font-size: 25px;
-    }
-    #teller {
-      width: 90%;
-    }
-    input {
-      width: 100%;
-      height: 30px;
-      font-size: 20px;
-    }
-    h1 {
-      color: #ffe100;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 27px;
-       display: block;
-       text-align: center;
-       font-weight: bold;
-    }
-    q {
-      color: #fde89e;
-      font-size: 25px;
-      display: block;
-       text-align: center;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-   </style>
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
-  <script>
-    function SubForm (){
-      cal();
-      $.ajax({
-        url:"https://api.apispreadsheets.com/data/7858/",
-        type:"post",
-        data:$("#myForm").serializeArray(),
-      });
-    }
-  </script>
-</head>
-<body>
-  <label id = "hnag"> BÓI TÌNH IU 😚 </label>
-  <q> Code by Cam Nguyen </q>
-  <br>
+    <head>
+        <title> Bói tình iu - CamNguyen's Code </title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            #name1 {
+                text-align: center;
+            }
+            #name2 {
+                text-align: center;
+                position: relative;
+                top: 15px;
+            }
+            #label2 {
+                position: relative;
+                top: 15px;
+            }
+            #myProgress {
+                width: 100%;
+                background-color: #ddd;
+                position: relative;
+                top: 20px;
+            }
 
-  <form id="myForm">
-    <a>Họ và tên của bạn</a>
-    <input name="Name1" id = "name1"/>
-    <br/>
-    <a>Họ và tên của người kia</a>
-    <input name="Name2" id = "name2"/>
-    <br/>
-  </form>
-  <br>
-  <button onclick='SubForm()' id = "start">START</button>
+            #myBar {
+                width: 1%;
+                height: 40px;
+                background-color: pink;
+                text-align: center;
+                line-height: 40px;
+                color: black;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+            body {
+                padding-top: 20px;
+                background: #726eb7;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%);
+                margin: 0;
+                overflow-x: hidden;
+            }
+            #hnag {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 70px;
+                color: #f28482;
+                display: block;
+                font-weight: bold;
+                text-align: center;
+            }
+            a {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 20px;
+                color: black;
+                display: block;
+                text-align: center;
+            }
+            label {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 35px;
+                color: #da66ac;
+                display: block;
+                text-align: center;
+                font-weight: bold;
+            }
+            b {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 27px;
+                color: black;
+                display: block;
+                text-align: center;
+                font-weight: bold;
+            }
+            button {
+                background-color: #fde89e;
+                color: #bd8051;
+                width: 100%;
+                height: 60px;
+                font-size: 25px;
+                position: relative;
+                top: 20px;
+            }
+            #teller {
+                width: 90%;
+            }
+            input {
+                width: 100%;
+                height: 30px;
+                font-size: 20px;
+            }
+            h1 {
+                color: #ffe100;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 27px;
+                display: block;
+                text-align: center;
+                font-weight: bold;
+            }
+            q {
+                color: #fde89e;
+                font-size: 25px;
+                display: block;
+                text-align: center;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script>
+            var haha = 0;
+            function startbar() {
+                if (haha == 0) {
+                    haha = 1;
+                    var elem = document.getElementById("myBar");
+                    var width = 0;
+                    var id = setInterval(frame, 30);
+                    function frame() {
+                        if (width >= 100) {
+                            clearInterval(id);
+                            haha = 0;
+                        } else {
+                            width++;
+                            elem.style.width = width + "%";
+                            elem.innerHTML = width + "%";
+                        }
+                    }
+                }
+            }
+            function SubForm() {
+                startbar();
+                $.ajax({
+                    url: "https://api.apispreadsheets.com/data/7858/",
+                    type: "post",
+                    data: $("#myForm").serializeArray(),
+                });
+                setTimeout(cal, 3600);
+            }
+        </script>
+    </head>
+    <body>
+        <label id="hnag"> 👉 BÓI TÌNH IU 👈 </label>
+        <q> Code written by Cam Nguyen </q>
+        <br />
 
-  <br><div id = "done"> <br></div>
-  <img src = "teller.png" id = "teller">
-  
-  <script type="text/javascript">
-    var divdone = document.getElementById('done'),
-        brr = document.createElement('br'),
-        ngang = document.createElement('a');
-    ngang.innerHTML = "----------";
-    function cal() {
-      var n1 = document.getElementById('name1').value,
-          n2 = document.getElementById('name2').value,
-          sc1 = 0, sc2 = 0;
-      for (i = 0, maxi = n1.length; i < maxi; ++i) {
-        tmp = n1[i].charCodeAt(0);
-        sc1 += tmp;
-      }
-      for (i = 0, maxi = n2.length; i < maxi; ++i) {
-        tmp = n2[i].charCodeAt(0);
-        sc2 += tmp;
-      }
-      tmp1 = (sc1/sc2)*100;
-      tmp2 = (sc2/sc1)*100;
-      tmp1 %= 100;
-      tmp2 %= 100;
-      ans = Math.max(tmp1, tmp2);
-      ans = Math.max(12.21, ans);
-      ans = ans.toFixed(2);
-      divdone.innerHTML = "";
-      txt11 = document.createElement('b'), heart = document.createElement('label'), txt2 = document.createElement('b'), txt1 = document.createElement('h1');
-      txt11.innerHTML = n1;
-      heart.innerHTML = " ❤ " + ans+'%' + " ❤ ";
-      txt2.innerHTML = n2;
-      divdone.append(brr);
-      divdone.append(txt11);
-      divdone.append(heart);
-      divdone.append(txt2);
-      if (ans < 10) txt1.innerHTML = "Xin lũi nhưng mà hai bạn hông hợp nhau rùi 😥";
-      else if (ans < 50) txt1.innerHTML = "Hmmm hai bạn có cơ hội đấy. Nếu biết nắm bắt thì sẽ đến được với nhau. Trúk may mắn 😉";
-      else if (ans < 70) txt1.innerHTML = "Ở trên tình bạn dưới tình iu 🤔 Còn tí xíu nữa thì hai bạn là của nhau rồi ...";
-      else if (ans < 90) txt1.innerHTML = "Sin trút mừnq 😙 Hai bạn rất hợp nhau";
-      else txt1.innerHTML = "Tuyệt zờiiiiiiiii. Hai bạn sinh ra là dành cho nhauuuuuuu 🎉🤗";
-      divdone.append(ngang);
-      divdone.append(txt1);
-    }
-  </script>
-</body>
+        <form id="myForm">
+            <a>Họ và tên của bạn</a>
+            <input name="Name1" id="name1" />
+            <br />
+            <a id="label2">Họ và tên của người kia</a>
+            <input name="Name2" id="name2" />
+            <br />
+        </form>
+        <br />
+        <button onclick="SubForm()" id="start">START</button>
+        <br />
+        <div id="myProgress">
+            <div id="myBar">0%</div>
+        </div>
+        <br />
+        <div id="done"><br /></div>
+        <img src="teller.png" id="teller" />
+
+        <script type="text/javascript">
+            var divdone = document.getElementById("done"),
+                brr = document.createElement("br"),
+                ngang = document.createElement("a");
+            ngang.innerHTML = "----------";
+            function cal() {
+                var n1 = document.getElementById("name1").value,
+                    n2 = document.getElementById("name2").value,
+                    sc1 = 0,
+                    sc2 = 0;
+                for (i = 0, maxi = n1.length; i < maxi; ++i) {
+                    tmp = n1[i].charCodeAt(0);
+                    sc1 += tmp;
+                }
+                for (i = 0, maxi = n2.length; i < maxi; ++i) {
+                    tmp = n2[i].charCodeAt(0);
+                    sc2 += tmp;
+                }
+                tmp1 = (sc1 / sc2) * 100;
+                tmp2 = (sc2 / sc1) * 100;
+                tmp1 %= 100;
+                tmp2 %= 100;
+                ans = Math.max(tmp1, tmp2);
+                ans = Math.max(12.21, ans);
+                ans = ans.toFixed(2);
+                divdone.innerHTML = "";
+                (txt11 = document.createElement("b")), (heart = document.createElement("label")), (txt2 = document.createElement("b")), (txt1 = document.createElement("h1"));
+                txt11.innerHTML = n1;
+                heart.innerHTML = " ❤ " + ans + "%" + " ❤ ";
+                txt2.innerHTML = n2;
+                divdone.append(brr);
+                divdone.append(txt11);
+                divdone.append(heart);
+                divdone.append(txt2);
+                if (ans < 10) txt1.innerHTML = "Xin lũi nhưng mà hai bạn hông hợp nhau rùi 😥";
+                else if (ans < 50) txt1.innerHTML = "Nếu biết nắm bắt thì sẽ đến được với nhau. Chúc may mắn nheeeeee 😉";
+                else if (ans < 70) txt1.innerHTML = "Ở trên tình bạn dưới tình iu 🤔 Còn tí xíu nữa thì hai bạn là của nhau rồi ...";
+                else if (ans < 90) txt1.innerHTML = "Sin trút mừnq 😙 Hai bạn rất hợp nhau";
+                else if (ans <= 100) txt1.innerHTML = "Tuyệt zờiiiiiiiii. Hai bạn sinh ra là dành cho nhauuuuuuu 🎉🤗";
+                else txt1.innerHTML = "Có trục trặc gì rồi ... Tui hông bói được :<";
+                divdone.append(ngang);
+                divdone.append(txt1);
+            }
+        </script>
+    </body>
 </html>
