@@ -5,12 +5,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style>
-            #name1 {
-                text-align: center;
-            }
             #name2 {
                 text-align: center;
-                position: relative;
                 top: 15px;
             }
             #label2 {
@@ -89,6 +85,7 @@
                 width: 100%;
                 height: 30px;
                 font-size: 20px;
+                text-align: center;
             }
             h1 {
                 color: #ffe100;
@@ -105,16 +102,19 @@
                 text-align: center;
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             }
+            #done {
+              position: relative;
+            }
         </style>
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
         <script>
             var haha = 0;
             function startbar() {
-                if (haha == 0) {
+                if (haha === 0) {
                     haha = 1;
                     var elem = document.getElementById("myBar");
                     var width = 0;
-                    var id = setInterval(frame, 30);
+                    var id = setInterval(frame, 25);
                     function frame() {
                         if (width >= 100) {
                             clearInterval(id);
@@ -134,21 +134,28 @@
                     type: "post",
                     data: $("#myForm").serializeArray(),
                 });
-                setTimeout(cal, 3600);
+                setTimeout(cal, 3000);
             }
         </script>
     </head>
     <body>
         <label id="hnag"> 👉 BÓI TÌNH IU 👈 </label>
-        <q> Code written by Cam Nguyen </q>
+        <q> 🥰 Code written by Cam Nguyen 🥰 </q>
         <br />
 
         <form id="myForm">
             <a>Họ và tên của bạn</a>
             <input name="Name1" id="name1" />
             <br />
-            <a id="label2">Họ và tên của người kia</a>
+            <a>Ngày sinh của bạn</a>
+            <input type="date" id="date1" min="1900-01-01" max="2021-04-17">
+            <br />
+            <a id="label2">Họ và tên của bạn kia</a>
+            <br/>
             <input name="Name2" id="name2" />
+            <br/>
+            <a>Ngày sinh của bạn kia</a>
+            <input type="date" id="date2" min="1900-01-01" max="2021-04-17">
             <br />
         </form>
         <br />
@@ -162,6 +169,7 @@
         <img src="teller.png" id="teller" />
 
         <script type="text/javascript">
+            var cung = ["Bạch Dương", "Kim Ngưu","Song Tử","Cự Giải","Sư Tử","Xử Nữ","Thiên Bình","Hổ Cáp","Nhân Mã","Ma Kết","Bảo Bình","Song Ngư"];
             var divdone = document.getElementById("done"),
                 brr = document.createElement("br"),
                 ngang = document.createElement("a");
@@ -187,22 +195,142 @@
                 ans = Math.max(12.21, ans);
                 ans = ans.toFixed(2);
                 divdone.innerHTML = "";
+                var dmy1 = document.getElementById("date1").value;
+                var sd1 = dmy1.substring(8,10), sm1 = dmy1.substring(5,7);
+                var dmy2 = document.getElementById("date2").value;
+                var sd2 = dmy2.substring(8,10), sm2 = dmy2.substring(5, 7);
+                var d1 = parseInt(sd1), m1 = parseInt(sm1), d2 = parseInt(sd2), m2 = parseInt(sm2);
+                var c1, c2;
+                if ((d1 >= 21 && m1 === 3) || (d1 <= 19 && m1 === 4)) c1 = 1;
+                if ((d1 >= 20 && m1 === 4) || (d1 <= 20 && m1 === 5)) c1 = 2; 
+                if ((d1 >= 21 && m1 === 5) || (d1 <= 21 && m1 === 6)) c1 = 3; 
+                if ((d1 >= 22 && m1 === 6) || (d1 <= 22 && m1 === 7)) c1 = 4; 
+                if ((d1 >= 23 && m1 === 7) || (d1 <= 22 && m1 === 8)) c1 = 5; 
+                if ((d1 >= 23 && m1 === 8) || (d1 <= 22 && m1 === 9)) c1 = 6; 
+                if ((d1 >= 23 && m1 === 9) || (d1 <= 23 && m1 === 10)) c1 = 7; 
+                if ((d1 >= 24 && m1 === 10) || (d1 <= 21 && m1 === 11)) c1 = 8; 
+                if ((d1 >= 22 && m1 === 11) || (d1 <= 21 && m1 === 12)) c1 = 9;
+                if ((d1 >= 22 && m1 === 12) || (d1 <= 19 && m1 === 1)) c1 = 10;
+                if ((d1 >= 20 && m1 === 1) || (d1 <= 18 && m1 === 2)) c1 = 11;
+                if ((d1 >= 19 && m1 === 2) || (d1 <= 20 && m1 === 3)) c1 = 12; 
+
+                if ((d2 >= 21 && m2 === 3) || (d2 <= 19 && m2 === 4)) c2 = 1;
+                if ((d2 >= 20 && m2 === 4) || (d2 <= 20 && m2 === 5)) c2 = 2; 
+                if ((d2 >= 21 && m2 === 5) || (d2 <= 21 && m2 === 6)) c2 = 3; 
+                if ((d2 >= 22 && m2 === 6) || (d2 <= 22 && m2 === 7)) c2 = 4; 
+                if ((d2 >= 23 && m2 === 7) || (d2 <= 22 && m2 === 8)) c2 = 5; 
+                if ((d2 >= 23 && m2 === 8) || (d2 <= 22 && m2 === 9)) c2 = 6; 
+                if ((d2 >= 23 && m2 === 9) || (d2 <= 23 && m2 === 10)) c2 = 7; 
+                if ((d2 >= 24 && m2 === 10) || (d2 <= 21 && m2 === 11)) c2 = 8;
+                if ((d2 >= 22 && m2 === 11) || (d2 <= 21 && m2 === 12)) c2 = 9;
+                if ((d2 >= 22 && m2 === 12) || (d2 <= 19 && m2 === 1)) c2 = 10;
+                if ((d2 >= 20 && m2 === 1) || (d2 <= 18 && m2 === 2)) c2 = 11;
+                if ((d2 >= 19 && m2 === 2) || (d2 <= 20 && m2 === 3)) c2 = 12; 
+                var check = 0;
+                if (c1 === 1) {
+                  if (c2 === 5 || c2 === 9) check = 1;
+                  else if (c2 === 4 || c2 === 10 || c2 === 7) check = -1;
+                }
+                if (c1 === 2) {
+                  if (c2 === 10 || c2 === 6) check = 1;
+                  else if (c2 === 11 || c2 === 5) check = -1;
+                }
+                if (c1 === 3) {
+                  if (c2 === 11 || c2 === 7) check = 1;
+                  else if (c2 === 12 || c2 === 4 || c2 === 6) check = -1;
+                }
+                if (c1 === 4) {
+                  if (c2 === 12 || c2 === 8) check = 1;
+                  else if (c2 === 1 || c2 === 7) check = -1;
+                }
+                if (c1 === 5) {
+                  if (c2 === 1 || c2 === 9) check = 1;
+                  else if (c2 === 10 || c2 === 2 || c2 === 8) check = -1;
+                }
+                if (c1 === 6) {
+                  if (c2 === 10 || c2 === 2) check = 1;
+                  else if (c2 === 3 || c2 === 12) check = -1;
+                }
+                if (c1 === 7) {
+                  if (c2 === 3 || c2 === 11) check = 1;
+                  else if (c2 === 2 || c2 === 4 || c2 === 10) check = -1;
+                }
+                if (c1 === 8) {
+                  if (c2 === 12 || c2 === 4) check = 1;
+                  else if (c2 === 11 || c2 === 5) check = -1;
+                }
+                if (c1 === 9) {
+                  if (c2 === 1 || c2 === 5 || c2 === 9) check = 1;
+                  else if (c2 === 6 || c2 === 12) check = -1;
+                }
+                if (c1 === 10) {
+                  if (c2 === 6 || c2 === 2) check = 1;
+                  else if (c2 === 7 || c2 === 1) check = -1;
+                }
+                if (c1 === 11) {
+                  if (c2 === 3 || c2 === 7) check = 1;
+                  else if (c2 === 8 || c2 === 12 || c2 === 4) check = -1;
+                }
+                if (c1 === 12) {
+                  if (c2 === 4 || c2 === 8) check = 1;
+                  else if (c2 === 6 || c2 === 9) check = -1;
+                }
                 (txt11 = document.createElement("b")), (heart = document.createElement("label")), (txt2 = document.createElement("b")), (txt1 = document.createElement("h1"));
-                txt11.innerHTML = n1;
-                heart.innerHTML = " ❤ " + ans + "%" + " ❤ ";
-                txt2.innerHTML = n2;
+                var ans2;
+                if (check === 1) ans2 = Math.min(100, 100 - c1 - c2 - 1);
+                else if (check === -1) ans2 = Math.max(35, 40 - c1*2 - 2*c2);
+                else ans2 = 60-c1-c2+5;
+                ans2 = ans2.toFixed(2);
+                txt11.innerHTML = "Mức độ hợp theo tên";
+                heart.innerHTML = ans + "%" ;
                 divdone.append(brr);
                 divdone.append(txt11);
+                divdone.append(brr);
                 divdone.append(heart);
-                divdone.append(txt2);
-                if (ans < 10) txt1.innerHTML = "Xin lũi nhưng mà hai bạn hông hợp nhau rùi 😥";
-                else if (ans < 50) txt1.innerHTML = "Nếu biết nắm bắt thì sẽ đến được với nhau. Chúc may mắn nheeeeee 😉";
-                else if (ans < 70) txt1.innerHTML = "Ở trên tình bạn dưới tình iu 🤔 Còn tí xíu nữa thì hai bạn là của nhau rồi ...";
-                else if (ans < 90) txt1.innerHTML = "Sin trút mừnq 😙 Hai bạn rất hợp nhau";
-                else if (ans <= 100) txt1.innerHTML = "Tuyệt zờiiiiiiiii. Hai bạn sinh ra là dành cho nhauuuuuuu 🎉🤗";
-                else txt1.innerHTML = "Có trục trặc gì rồi ... Tui hông bói được :<";
+                divdone.append(brr);
+                ngang1 = document.createElement("a");
+            ngang1.innerHTML = "----------";
+            divdone.append(ngang1);
+
+                (txt113 = document.createElement("b")), (heart3 = document.createElement("label")), (txt23 = document.createElement("b")), (txt13 = document.createElement("h1"));
+                cung1 = document.createElement("b");
+                cung1.innerHTML = "("+cung[c1-1]+" và " + cung[c2-1] + ")";
+                txt113.innerHTML = "Mức độ hợp theo ngày sinh ";
+                heart3.innerHTML = ans2 + "%";
+                divdone.append(brr);
+                divdone.append(brr);
+                divdone.append(txt113);
+                divdone.append(cung1);
+                divdone.append(brr);
+                divdone.append(heart3);
+                divdone.append(brr);
+                ngang2 = document.createElement("a");
+            ngang2.innerHTML = "----------";
+                divdone.append(ngang2);
+
+                (txt114 = document.createElement("b")), (heart4 = document.createElement("label")), (txt24 = document.createElement("b")), (txt14 = document.createElement("h1"));
+                var maxx = Math.max(ans, ans2),
+                    minn = Math.min(ans, ans2);
+                ans = (minn + maxx*2)/3 + 20;
+                if (ans <= 30) ans += 21;
+                else if (ans >= 100) ans = 100;
+                ans = ans.toFixed(2);
+                txt114.innerHTML = n1;
+                heart4.innerHTML = " ❤ " + ans + "%" + " ❤ ";
+                txt24.innerHTML = n2;
+                divdone.append(brr);
+                divdone.append(txt114);
+                divdone.append(heart4);
+                divdone.append(txt24);
+
+                if (ans < 10) txt14.innerHTML = "Xin lũi nhưng mà hai bạn hông hợp nhau rùi 😥";
+                else if (ans < 50) txt14.innerHTML = "Nếu biết nắm bắt cơ hội thì sẽ đến được với nhau. Chúc may mắn nheeeeee 😉";
+                else if (ans < 70) txt14.innerHTML = "Ở trên tình bạn dưới tình iu 🤔 Còn tí xíu nữa thì hai bạn là của nhau rồi ...";
+                else if (ans < 90) txt14.innerHTML = "Sin trút mừnq 😙 Hai bạn rất hợp nhau";
+                else if (ans <= 100) txt14.innerHTML = "Tuyệt zờiiiiiiiii. Hai bạn sinh ra là dành cho nhauuuuuuu 🎉🤗";
+                else txt14.innerHTML = "Có trục trặc gì rồi ... Tui hông bói được :<";
                 divdone.append(ngang);
-                divdone.append(txt1);
+                divdone.append(txt14);
             }
         </script>
     </body>
