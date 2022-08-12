@@ -116,7 +116,42 @@
             }
         </style>
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-        <script>
+        <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBsP3OnQ-YZSHVsNAK4NzcniWi1nyF2zh0",
+    authDomain: "fortune-teller-54927.firebaseapp.com",
+    databaseURL: "https://fortune-teller-54927-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "fortune-teller-54927",
+    storageBucket: "fortune-teller-54927.appspot.com",
+    messagingSenderId: "114466403738",
+    appId: "1:114466403738:web:2623d5eab4f1731ca3f623",
+    measurementId: "G-KSQTP2WHDH"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+            const db = getDatabase(app);
+            document.getElementById('myForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                startbar();
+                var per1 = document.getElementById('name1').value, per2 = document.getElementById('name2').value;
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+                var yyyy = today.getFullYear();
+                today = mm + '/' + dd + '/' + yyyy;
+                set(ref(db, 'users/' + per1 + per2), {date: today});
+                setTimeout(cal, 3000);
+            }
             var haha = 0;
             function startbar() {
                 if (haha === 0) {
@@ -136,50 +171,7 @@
                     }
                 }
             }
-            function SubForm() {
-                startbar();
-                $.ajax({
-                    url: "https://api.apispreadsheets.com/data/7858/",
-                    type: "post",
-                    data: $("#myForm").serializeArray(),
-                });
-                setTimeout(cal, 3000);
-            }
-        </script>
-    </head>
-    <body>
-        <label id="hnag"> 👉 BÓI TÌNH IU 👈 </label>
-        <q> 🥰 Code written by Cam Nguyen 🥰 </q>
-        <br />
-
-        <form id="myForm">
-            <a>Họ và tên của bạn</a>
-            <input name="Name1" id="name1" />
-            <br />
-            <a>Ngày sinh của bạn</a>
-            <input type="date" id="date1" min="1900-01-01" max="2021-04-17">
-            <br />
-            <a id="label2">Họ và tên của bạn kia</a>
-            <br/>
-            <input name="Name2" id="name2" />
-            <br/>
-            <a>Ngày sinh của bạn kia</a>
-            <input type="date" id="date2" min="1900-01-01" max="2021-04-17">
-            <br />
-        </form>
-        <br />
-        <button onclick="SubForm()" id="start">START</button>
-        <br />
-        <div id="myProgress">
-            <div id="myBar">0%</div>
-        </div>
-        <br />
-        <div id="done"><br /></div>
-        <img src="teller.png" id="teller" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7310599997431097"
-     crossorigin="anonymous"></script>
-        <script type="text/javascript">
-            var cung = ["Bạch Dương", "Kim Ngưu","Song Tử","Cự Giải","Sư Tử","Xử Nữ","Thiên Bình","Hổ Cáp","Nhân Mã","Ma Kết","Bảo Bình","Song Ngư"];
+   var cung = ["Bạch Dương", "Kim Ngưu","Song Tử","Cự Giải","Sư Tử","Xử Nữ","Thiên Bình","Hổ Cáp","Nhân Mã","Ma Kết","Bảo Bình","Song Ngư"];
             var divdone = document.getElementById("done"),
                 brr = document.createElement("br"),
                 ngang = document.createElement("a");
@@ -343,5 +335,37 @@
                 divdone.append(txt14);
             }
         </script>
+    </head>
+    <body>
+        <label id="hnag"> 👉 BÓI TÌNH IU 👈 </label>
+        <q> 🥰 Code written by Cam Nguyen 🥰 </q>
+        <br />
+
+        <form id="myForm">
+            <a>Họ và tên của bạn</a>
+            <input name="Name1" id="name1" />
+            <br />
+            <a>Ngày sinh của bạn</a>
+            <input type="date" id="date1" min="1900-01-01" max="2021-04-17">
+            <br />
+            <a id="label2">Họ và tên của bạn kia</a>
+            <br/>
+            <input name="Name2" id="name2" />
+            <br/>
+            <a>Ngày sinh của bạn kia</a>
+            <input type="date" id="date2" min="1900-01-01" max="2021-04-17">
+            <br />
+            <button type="submit" id="start">START</button>
+        </form>
+        
+        <br />
+        <div id="myProgress">
+            <div id="myBar">0%</div>
+        </div>
+        <br />
+        <div id="done"><br /></div>
+        <img src="teller.png" id="teller" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7310599997431097"
+     crossorigin="anonymous"></script>
     </body>
 </html>
