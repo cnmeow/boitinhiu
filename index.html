@@ -176,7 +176,7 @@
                     sc1 = 0,
                     sc2 = 0;
                 for (let i = 0, maxi = n1.length; i < maxi; ++i) {
-                    var tmp = n1[i].charCodeAt(0);
+                     var tmp = n1[i].charCodeAt(0);
                     sc1 += tmp;
                 }
                 for (let i = 0, maxi = n2.length; i < maxi; ++i) {
@@ -306,8 +306,8 @@
                 var txt114 = document.createElement("b"), heart4 = document.createElement("label"), txt24 = document.createElement("b"), txt14 = document.createElement("h1");
                 var maxx = Math.max(ans, ans2),
                     minn = Math.min(ans, ans2);
-                ans = (minn + maxx*2)/3 + 20;
-                if (ans <= 30) ans += 21;
+                ans = (minn + maxx)/2;
+                if (ans <= 20) ans += 11;
                 else if (ans >= 100) ans = 100;
                 ans = ans.toFixed(2);
                 txt114.innerHTML = n1;
