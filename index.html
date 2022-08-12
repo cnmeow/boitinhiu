@@ -176,11 +176,11 @@
                     sc1 = 0,
                     sc2 = 0;
                 for (let i = 0, maxi = n1.length; i < maxi; ++i) {
-                    tmp = n1[i].charCodeAt(0);
+                    var tmp = n1[i].charCodeAt(0);
                     sc1 += tmp;
                 }
                 for (let i = 0, maxi = n2.length; i < maxi; ++i) {
-                    tmp = n2[i].charCodeAt(0);
+                    var tmp = n2[i].charCodeAt(0);
                     sc2 += tmp;
                 }
                 var tmp1 = (sc1 / sc2) * 100, 
