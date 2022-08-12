@@ -117,15 +117,10 @@
         </style>
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
         <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
-  import { getDatabase, ref, set} from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+  import { getDatabase, ref, set} from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+
   const firebaseConfig = {
     apiKey: "AIzaSyBsP3OnQ-YZSHVsNAK4NzcniWi1nyF2zh0",
     authDomain: "fortune-teller-54927.firebaseapp.com",
@@ -134,13 +129,11 @@
     storageBucket: "fortune-teller-54927.appspot.com",
     messagingSenderId: "114466403738",
     appId: "1:114466403738:web:2623d5eab4f1731ca3f623",
-    measurementId: "G-KSQTP2WHDH"
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-            const db = getDatabase(app);
+ const app = initializeApp(firebaseConfig);
+		const db = getDatabase(app);
             document.getElementById('myForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 startbar();
