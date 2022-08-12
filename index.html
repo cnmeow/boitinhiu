@@ -183,11 +183,11 @@
                     tmp = n2[i].charCodeAt(0);
                     sc2 += tmp;
                 }
-                tmp1 = (sc1 / sc2) * 100;
+                var tmp1 = (sc1 / sc2) * 100, 
                 tmp2 = (sc2 / sc1) * 100;
                 tmp1 %= 100;
                 tmp2 %= 100;
-                ans = Math.max(tmp1, tmp2);
+                var ans = Math.max(tmp1, tmp2);
                 ans = Math.max(12.21, ans);
                 ans = ans.toFixed(2);
                 divdone.innerHTML = "";
@@ -271,7 +271,7 @@
                   if (c2 === 4 || c2 === 8) check = 1;
                   else if (c2 === 6 || c2 === 9) check = -1;
                 }
-                (txt11 = document.createElement("b")), (heart = document.createElement("label")), (txt2 = document.createElement("b")), (txt1 = document.createElement("h1"));
+                var txt11 = document.createElement("b"), heart = document.createElement("label"), txt2 = document.createElement("b"), txt1 = document.createElement("h1");
                 var ans2;
                 if (check === 1) ans2 = Math.min(100, 100 - c1 - c2 - 1);
                 else if (check === -1) ans2 = Math.max(35, 40 - c1*2 - 2*c2);
@@ -284,12 +284,11 @@
                 divdone.append(brr);
                 divdone.append(heart);
                 divdone.append(brr);
-                ngang1 = document.createElement("a");
+                var ngang1 = document.createElement("a");
             ngang1.innerHTML = "----------";
             divdone.append(ngang1);
 
-                (txt113 = document.createElement("b")), (heart3 = document.createElement("label")), (txt23 = document.createElement("b")), (txt13 = document.createElement("h1"));
-                cung1 = document.createElement("b");
+                var txt113 = document.createElement("b"), heart3 = document.createElement("label"), txt23 = document.createElement("b"), txt13 = document.createElement("h1"), cung1 = document.createElement("b");
                 cung1.innerHTML = "("+cung[c1-1]+" và " + cung[c2-1] + ")";
                 txt113.innerHTML = "Mức độ hợp theo ngày sinh ";
                 heart3.innerHTML = ans2 + "%";
@@ -300,11 +299,11 @@
                 divdone.append(brr);
                 divdone.append(heart3);
                 divdone.append(brr);
-                ngang2 = document.createElement("a");
+                var ngang2 = document.createElement("a");
             ngang2.innerHTML = "----------";
                 divdone.append(ngang2);
 
-                (txt114 = document.createElement("b")), (heart4 = document.createElement("label")), (txt24 = document.createElement("b")), (txt14 = document.createElement("h1"));
+                var txt114 = document.createElement("b"), heart4 = document.createElement("label"), txt24 = document.createElement("b"), txt14 = document.createElement("h1");
                 var maxx = Math.max(ans, ans2),
                     minn = Math.min(ans, ans2);
                 ans = (minn + maxx*2)/3 + 20;
